@@ -1,11 +1,6 @@
-
 <template>
-    <header id="heading">
-        <div class="logo">
-            <h2>Hello i'm {{ name }}, and welcome to my todo list</h2>
-        </div>
-    </header>
   <div class="container">
+    <Header />
         <div class="todo-app">
             <h2>Your TO-DO list <img src="\src\assets\images.jpg" alt="just some image"></h2>
             <div class="row">
@@ -24,48 +19,49 @@
   <RouterView />
 </template>
 
-<script>
-export default{
-  name: "App",
-  data() {
-    return{
-      name: "walker",
-      newTask: "",
-      tasks: [],
-    };
-  },
-  methods: {
-    addTask() {// Method to add a new task to the `tasks` array.
-      if (this.newTask.trim() === '') {
+<script setup>
+import Header from './components/Header.vue';
+import { ref, onMounted } from 'vue'
+const name = ref("walker");
+const newTask = ref("")
+const tasks = ref([])
+
+function addTask()
+{
+  if (newTask.value.trim() === '') {
         alert("You must write something!");
       } else {
-        this.tasks.push({ text: this.newTask, checked: false });
-        this.newTask = '';
-        this.saveData();
+        tasks.value.push({ text: newTask.value, checked: false });
+        newTask.value = '';
+        saveData();
       }
-    },
-    saveData() {
-      localStorage.setItem("tasks", JSON.stringify(this.tasks));
-    },
-    removeTask(index) {// Method to remove a task from the `tasks` array based on its index.
-      this.tasks.splice(index, 1);
-      this.saveData();
-    },
-    toggleTask(index) {// Method to toggle the checked state of a task
-      this.tasks[index].checked = !this.tasks[index].checked;
-      this.saveData();
-    },
-    loadTasks() {
+}
+    function saveData() 
+    {
+      localStorage.setItem("tasks", JSON.stringify(tasks.value));
+    }
+    function removeTask(index) 
+    {// Method to remove a task from the `tasks` array based on its index.
+      tasks.value.splice(index, 1);
+      saveData();
+    }
+    function toggleTask(index) 
+    {// Method to toggle the checked state of a task
+      tasks.value[index].checked = !tasks.value[index].checked;
+      saveData();
+    }
+    function loadTasks()
+    {
       const savedTasks = localStorage.getItem("tasks");
       if (savedTasks) {
-        this.tasks = JSON.parse(savedTasks);
+        tasks.value = JSON.parse(savedTasks);
       }
-    }    
-  },
-  mounted() {// Lifecycle hook called after the component has been mounted to the DOM.
-      this.loadTasks();// Calls the method to load tasks from local storage when the component is mounted.
-  }
-};
+    } 
+
+onMounted(() => {
+  loadTasks()
+})
+
 </script>
 
 
