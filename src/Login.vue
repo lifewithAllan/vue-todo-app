@@ -1,9 +1,11 @@
 <template>
     <div class="login-container">
       <h2>Login</h2>
-      <input type="text" v-model="username" placeholder="Username" />
-      <input type="password" v-model="password" placeholder="Password" />
-      <button @click="login">Login</button>
+      <form @submit.prevent="login">
+        <input type="text" v-model="username" placeholder="Username" />
+        <input type="password" v-model="password" placeholder="Password" />
+        <button type="submit" @click="login">Login</button>
+      </form>
     </div>
   </template>
   
@@ -14,15 +16,18 @@
   const username = ref('');
   const password = ref('');
   const router = useRouter();
+
+  // Hardcoded credentials
+  const hardcodedUsername = 'walker';
+  const hardcodedPassword = '123456789';
   
-  function login() {
-    if (username.value === 'user' && password.value === 'password') {
-      localStorage.setItem('authenticated', true);
-      router.push('/todos');
-    } else {
-      alert('Incorrect username or password');
-    }
-  }
+  const login = () => {
+      if (username.value === hardcodedUsername && password.value === hardcodedPassword) {
+        router.push({ name: 'App' });
+      } else {
+        alert('Invalid username or password');
+      }
+    };
   </script>
   
   <style>
