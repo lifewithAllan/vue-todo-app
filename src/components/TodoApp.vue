@@ -1,5 +1,3 @@
-<!--Rename your existing code file to TodoApp.vue and make sure it matches the new path.-->
-<!-- src/components/TodoApp.vue -->
 <template>
     <div class="container">
       <Header />

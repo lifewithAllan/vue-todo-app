@@ -1,8 +1,13 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import TodoApp from '../components/TodoApp.vue';
-import App from '@/components/App.vue';
+//import App from '@/components/App.vue';
 
 const routes = [
+  {
+    path: '/mytodo',
+    name: 'App',
+    component: () => import('./components/App.vue')
+  },
   { 
     path: '/',
     component: Login 
@@ -22,12 +27,7 @@ const routes = [
       //}
     //},
   },
-  {
-    path: '/mytodo',
-    name: 'App',
-    component: App
-  }
-
+  
 ];
 
 // Create the router instance STEP 1 COMPLETE
