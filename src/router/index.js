@@ -1,31 +1,28 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import TodoApp from '../components/TodoApp.vue';
-//import App from '@/components/App.vue';
+import MaincomponentModified from '@/components/MaincomponentModified.vue';
+import App from '@/components/App.vue';
 
 const routes = [
   {
     path: '/mytodo',
     name: 'App',
-    component: () => import('./components/App.vue')
+    component: App
   },
   { 
     path: '/',
     component: Login 
   },
   {
+    path: '/todolist',
+    //name: 'App1',
+    component: MaincomponentModified
+  },
+  {
     path: '/todos', 
-    //name: 'TodoApp', 
+    name: 'TodoApp', 
     component: TodoApp,
-    //beforeEnter: (to, from, next) => {
-      // Route guard to check if the user is authenticated
-      //if (!localStorage.getItem('authenticated')) {
-        // If not authenticated, redirect to the login page
-        //next({ name: 'Login' });
-      //} else {
-        // If authenticated, allow access to the route
-        //next();
-      //}
-    //},
+   
   },
   
 ];
