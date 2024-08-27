@@ -12,8 +12,6 @@
   <script setup>
   import { ref } from 'vue';
   import { useRouter } from 'vue-router';
-  import MaincomponentModified from './components/MaincomponentModified.vue';
-import TodoApp from './components/TodoApp.vue';
   
   const username = ref('');
   const password = ref('');
@@ -27,7 +25,7 @@ import TodoApp from './components/TodoApp.vue';
     //console.log('Login function called');
       if (username.value === hardcodedUsername && password.value === hardcodedPassword) {
         //console.log('Credentials match');
-        router.push({ name: TodoApp });
+        router.push({ name: App });
       } else {
         //console.log('Invalid username or password');
         alert('Invalid username or password');

@@ -1,6 +1,4 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import TodoApp from '../components/TodoApp.vue';
-import MaincomponentModified from '@/components/MaincomponentModified.vue';
 import App from '@/components/App.vue';
 
 const routes = [
@@ -12,17 +10,6 @@ const routes = [
   { 
     path: '/',
     component: Login 
-  },
-  {
-    path: '/todolist',
-    //name: 'App1',
-    component: MaincomponentModified
-  },
-  {
-    path: '/todos', 
-    name: 'TodoApp', 
-    component: TodoApp,
-   
   },
   
 ];
