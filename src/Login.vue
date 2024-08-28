@@ -25,7 +25,7 @@
     //console.log('Login function called');
       if (username.value === hardcodedUsername && password.value === hardcodedPassword) {
         //console.log('Credentials match');
-        router.push({ name: App });
+        router.push({ name: 'App' });
       } else {
         //console.log('Invalid username or password');
         alert('Invalid username or password');
@@ -50,6 +50,8 @@
     margin: 10px 0;
     border: 1px solid #ccc;
     border-radius: 5px;
+    border-style: solid;
+    border-color: crimson;
   }
   
   button {

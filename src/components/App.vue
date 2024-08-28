@@ -1,6 +1,7 @@
 <template>
   <div class="container">
     <Header />
+    <router-view/>
         <div class="todo-app">
             <h2>Your TO-DO list <img src="\src\assets\images.jpg" alt="just some image"></h2>
             <div class="row">
@@ -15,8 +16,6 @@
             </ul>
         </div>
    </div>
-
-  <RouterView />
 </template>
 
 <script setup>

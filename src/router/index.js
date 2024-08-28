@@ -1,22 +1,22 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import App from '@/components/App.vue';
+import Login from '@/Login.vue';
 
 const routes = [
-  {
-    path: '/mytodo',
-    name: 'App',
-    component: App
-  },
   { 
     path: '/',
     component: Login 
   },
-  
+  {
+    path: '/mytodo',
+    name: 'App',
+    component: App
+  },  
 ];
 
 // Create the router instance STEP 1 COMPLETE
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL), // Use HTML5 history mode
+  history: createWebHistory(), // Use HTML5 history mode
   routes, // Routes configuration
 });
 
